@@ -1,6 +1,6 @@
 import { Controller, Delete, Get, Post, Put } from "@nestjs/common";
 
-@Controller('songs')
+@Controller('songs') // 'songs' is the path prefix 
 export class SongsController{
     @Post()
     create(){
