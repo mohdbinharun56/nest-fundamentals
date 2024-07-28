@@ -1,7 +1,9 @@
-import { Controller, Delete, Get, Post, Put } from "@nestjs/common";
+import { Controller, Delete, Get, Inject, Post, Put } from "@nestjs/common";
+import { SongsService } from "./songs.service";
 
 @Controller('songs') // 'songs' is the path prefix 
 export class SongsController{
+    constructor(private songsService: SongsService){}
     @Post()
     create(){
         return "create a new song endoints";
