@@ -1,22 +1,28 @@
-import { Controller, Delete, Get, Inject, Post, Put } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Inject, Post, Put } from "@nestjs/common";
 import { SongsService } from "./songs.service";
 
 @Controller('songs') // 'songs' is the path prefix 
 export class SongsController{
-    constructor(private songsService: SongsService){}
+    constructor(private songsService: SongsService){} // dependency injection of SongService. SongController depends on the SpongService.
     @Post()
     create(){
-        return "create a new song endoints";
+        const song = [
+            {name: "Animal", artists: "Martin"},
+            {name: "Adat", artists:"Atif Aaslam"}
+        ];
+        return this.songsService.create(song);
+        // return "create a new song endoints";
     }
 
     @Get()
     findAll(){
-        return "Find all the songs";
+        return this.songsService.findAll();
+        //return "Find all the songs";
     }
 
     @Get(':id')
     findOne(){
-        return "fetch song based on id";
+        return `fetch song based on id `;
     }
 
     @Put(':id')
